@@ -100,7 +100,7 @@ $ postgres=# \c coffee_store;
 $ postgres=# \dt
 ```
 
-- Create tables
+- Create tables  
 Syntax: 
 ```sql
 CREATE TABLE table_name(
@@ -153,4 +153,68 @@ CREATE TABLE orders (
   FOREIGN KEY (product_id) REFERENCES products (id),
   FOREIGN KEY (customer_id) REFERENCES customers (id)
 );
+```
+
+- Modify the table schema  
+to add/remove primary key, foreign key, unique constraint, change column name, change column data type
+Syntax: 
+```sql
+// add or remove primary key
+ALTER TABLE table_name { ADD | DROP } PRIMARY KEY (columns);
+
+// add or remove foreign key 
+ALTER TABLE table_name ADD CONSTRAINT constaintName FOREIGN KEY (column) REFERENCES table_name(column);
+
+ALTER TABLE table_name DROP FOREIGN KEY constraintName;
+
+// add or remove unique constraint
+ALTER TABLE table_name ADD CONSTRAINT constraintName UNIQUE (column);
+
+ALTER TABLE table_name DROP CONSTRAINT constraintName;
+
+
+// rename column
+ALTER TABLE table_name RENAME  'old_name' TO 'new_column_name';
+
+// change datatype 
+ALTER TABLE table_name ALTER COLUMN columnName type datatype;
+```
+
+```sql
+// schema details of the table 
+$ postgres=# \d+ table_name
+
+Eg: 
+$ postgres=# \d+ products
+```
+
+Example:  
+```sql
+ALTER TABLE products 
+ADD COLUMN coffee_origin VARCHAR(30);
+
+ALTER TABLE products 
+ALTER COLUMN coffee_origin SET DEFAULT 'NEPAL';
+```
+
+- Deleting Tables  
+Syntax:  
+```sql
+DROP TABLE table_name;
+```
+
+Example:  
+```sql
+DROP TABLE test;
+```
+
+- Truncating Tables
+Syntax:
+```sql
+TRUNCATE TABLE table_name;
+```
+
+Example:  
+```sql
+TRUNCATE TABLE test;
 ```
