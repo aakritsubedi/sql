@@ -19,7 +19,8 @@ An organized collection of information/data.
 - can create views in a database
 - can set permissions on tables, procedures, and views
   
-# Learning SQL 
+# Data Definition Language
+Data definition language(DDL) is a subsection of SQL which deals with the creation of database objects such as tables and views.
 
 ## Data Types
  
@@ -218,3 +219,18 @@ Example:
 ```sql
 TRUNCATE TABLE test;
 ```
+
+## Exercise: 1 Data Definition Language and Alter Table
+```
+Exercise 1
+-- Create database Test
+-- Create Pets and People Table
+-- Add a primary key to the id fields in the pets and people table 
+-- Add a foreign key to the owner_id field in the pets table referencing the id field in the people table
+-- Add a column named email to the people table 
+-- Add a unique constraint to email column in the people table 
+-- Rename the column name in the peoples table to 'first_name'
+-- Change the postcode data type to char(7) in the people table
+```
+
+Source: [Solution to Exercise1](./sql/01_exercise1.sql)
