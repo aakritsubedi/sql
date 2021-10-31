@@ -234,3 +234,54 @@ Exercise 1
 ```
 
 Source: [Solution to Exercise1](./sql/01_exercise1.sql)
+
+# Data Manipulation Language 
+Data manipulation language or DML is a subset of SQL which is concerned with the inserting and updating and deleting of data in tables. So DDL was concerned with creating tables, and now DML is concerned with inserting data into those tables. 
+
+- INSERT data into table  
+Syntax:
+```sql
+INSERT INTO table_name (column1, column2...) 
+VALUES('value1', 'value2', ...);
+```
+
+Example:  
+```sql
+INSERT INTO products(name, price, status) 
+VALUES('Himalayan Beans', 9.50, true);
+
+INSERT INTO products(name, price, status)
+VALUES ('Latte', 3.50, true), ('Cappuccino', 3.50, false), ('Americano', 3.00, true);
+```
+
+- Update data   
+Syntax:
+```sql
+UPDATE table_name
+SET column = 'value'
+WHERE condition;
+```
+
+Example:
+```sql
+UPDATE products
+SET price = 7
+WHERE id = 2;
+
+UPDATE products 
+SET price=7.5, name='Nepal Himalayan Bean'
+WHERE id=2;
+```
+
+- DELETE data  
+Syntax:
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+Example: 
+```sql
+DELETE FROM products
+WHERE id=2;
+```
