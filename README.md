@@ -233,7 +233,7 @@ Exercise 1
 -- Change the postcode data type to char(7) in the people table
 ```
 
-Source: [Solution to Exercise1](./sql/01_exercise1.sql)
+Source: [Solution to Exercise1](./sql/01_DDL/01_exercise1.sql)
 
 # Data Manipulation Language 
 Data manipulation language or DML is a subset of SQL which is concerned with the inserting and updating and deleting of data in tables. So DDL was concerned with creating tables, and now DML is concerned with inserting data into those tables. 
@@ -285,3 +285,84 @@ Example:
 DELETE FROM products
 WHERE id=2;
 ```
+
+## Inserting dummy values in tables  
+[Inserting sample data](./sql/02_DML/01_insertingData.sql)  
+
+# SELECTING from a table
+
+- SELECT Statement  
+Syntax:
+```sql
+SELECT column1, column2 ... 
+FROM table_name;
+```
+
+Example: 
+```sql
+SELECT first_name, last_name FROM customers;
+
+// selecting all the records
+SELECT * FROM customers;
+```
+
+- adding WHERE clause  
+```sql
+SELECT column1, column2 ...
+FROM table_name
+WHERE condition;
+```
+
+**Note:**  
+- `>` greater than
+- `>=` greater than or equal to
+- `<` less than
+- `<=` less than or equal to
+
+Example: 
+```sql
+SELECT * FROM products
+WHERE coffee_origin='NEPAL';
+
+SELECT * FROM products
+WHERE price > 4;
+
+SELECT * FROM products
+WHERE price >= 5;
+
+SELECT * FROM products
+WHERE price <= 3;
+
+-- Multiple Condition
+SELECT * FROM products
+WHERE coffee_origin='NEPAL'
+AND
+price > 4;
+
+SELECT * FROM products
+WHERE coffee_origin='NEPAL'
+OR 
+price > 4;
+```
+
+- Null values    
+SELECTing all the customers with phoneNo is/not NULL.
+
+```sql
+-- all the customers with no phone no.
+SELECT * FROM customers
+WHERE phone_no IS NULL;
+
+-- all the customers with phone no.
+SELECT * FROM customers
+WHERE phone_no IS NOT NULL;
+```
+
+## Exercise 1
+```
+Exercise 1
+- From the customers table, select the first name and phone no. of all the females who have a last name Bluth
+- From the products table, select the name for all products that have a price greater than 3.00 or coffee origin of NEPAL
+- How many male customers don't have a phone no. entered into the customers table?
+```
+Source: [Solution to Exercise1](./sql/03_SELECT/01_exercise1.sql)
