@@ -366,3 +366,84 @@ Exercise 1
 - How many male customers don't have a phone no. entered into the customers table?
 ```
 Source: [Solution to Exercise1](./sql/03_SELECT/01_exercise1.sql)
+
+## IN, NOT IN, BETWEEN, LIKE
+
+Example: 
+```sql
+-- IN
+SELECT * FROM customers
+WHERE last_name IN ('Subedi', 'Bhandari', 'Nepal');
+
+-- NOT IN
+SELECT * FROM customers
+WHERE first_name NOT IN ('Ram', 'John', 'Roshan');
+
+-- BETWEEN: in range 
+SELECT * FROM orders
+WHERE order_time BETWEEN '2017-01-01' AND '2017-01-07';
+
+SELECT * FROM customers
+WHERE id BETWEEN 5 AND 10; // will include 5 and 10 also.
+
+SELECT * FROM customers
+WHERE last_name BETWEEN 'A' and 'L';
+
+-- LIKE: matching pattern
+-- `%` any no. of character
+-- `_` just one character
+
+SELECT * FROM customers
+WHERE last_name LIKE 'W%';
+
+SELECT * FROM customers
+WHERE last_name LIKE 'W___';
+
+SELECT * FROM customers
+WHERE last_name LIKE '%o%'; 
+
+SELECT * FROM customers
+WHERE first_name LIKE '_o%';
+
+SELECT * FROM products WHERE
+WHERE price LIKE '3%';
+```
+
+## ORDER BY
+Order data in specific order  
+
+Syntax:  
+```sql
+SELECT * FROM table_name
+WHERE condition
+ORDER BY column { ASC | DESC };
+```
+
+Example: 
+```sql
+SELECT * FROM products
+ORDER BY price DESC;
+
+SELECT * FROM products
+ORDER BY price ASC;
+
+SELECT * FROM customers
+ORDER BY first_name ASC;
+
+SELECT * FROM orders
+ORDER BY order_time DESC;
+
+-- Default is ascending
+SELECT * FROM products
+ORDER BY price;
+```
+
+## Exercise: 2 SELECTing data
+```
+Exercise 2
+-- From the products table, select the name and price of all products with coffee origin equal to Nepal or Indonesia. Order by name from A-Z
+-- From the orders table, select all the orders from Feb 2017 for customers with id's 2,4,6,8.
+-- From the customers table, select first_name and phone no. of all customers who's last_name contains the patten 'ar'
+```
+
+Source: [Solution to Exercise2](./sql/03_SELECT/02_exercise2.sql)
