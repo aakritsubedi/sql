@@ -644,3 +644,59 @@ Exercise 1
 ```
 
 Source: [Solution to Exercise1](./sql/04_JOINS/01_exercise1.sql)
+
+# Database Design
+
+## Normalization
+is the process of efficiently organizing data in a database.  
+
+> Database normalization is a database schema design technique, by which an existing schema is modified to minimize redundancy and dependency of data. Normalization split a large table into smaller tables and define relationships between them to increases the clarity in organizing data.
+
+**Why?**
+- to eliminate redundant data
+- to only store related data in the table
+**Benefits:**
+- reduce storage space
+- reduce insert, update and delete anomalies
+- improve query performance
+
+**Levels of Normalization**
+- 1st Normal Form (1NF)
+- 2nd Normal Form (2NF)
+- 3rd Normal Form (3NF)
+- Boyce-Codd Normal Form (BCNF)
+- 4th Normal Form (4NF)
+- 5th Normal Form (5NF)
+
+## 1st Normal Form (1NF)
+Tables are in 1NF if:
+- no repeated rows of data
+- columns only contain a single value
+- the table has a primary key
+
+## 2nd Normal Form (2NF)
+Tables are in 2NF if:
+- They conform to 1NF
+- every column that is not a primary key of the table is dependent on the whole of the primary key  
+(removing unrelated data from tables)
+
+## 3rd Normal Form (3NF)
+Tables are in 3NF if:
+- They conform to 2NF
+- every column that is not a primary key is only dependent on the whole of the primary key  
+(removing transitive dependent data from tables)  
+
+3NF is achieved, considered as the database is normalized.
+
+## Boyce-Codd Normal Form (BCNF)
+Tables are in BCNF if:
+- The conform to 3NF
+- all tables in the database should be only one primary key.
+
+## 4th Normal Form (4NF)
+Tables are in 4NF if:
+- Tables cannot have multi-valued dependencies on a Primary Key.
+
+## 5th Normal Form (5NF)
+Tables are in 5NF if:
+- A composite key shouldn't have any cyclic dependencies.
