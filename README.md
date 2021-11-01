@@ -496,3 +496,151 @@ Exercise 3
 ```
 
 Source: [Solution to Exercise3](./sql/03_SELECT/03_exercise3.sql)
+
+# SELECTING from Multiple Tables
+
+## What is a JOIN? 
+Joins allow you to retrieve data from multiple tables in a single SELECT statement. To join two tables there needs to be a related column between them. 
+
+There are many different kinds of JOINs
+- **INNER Join**
+  - will retrieve data only when there is matching values in both tables
+
+- **LEFT Join**
+  - will retrieve data from the left table(table 1) and matching rows from the right table(table 2)
+
+- **RIGHT Join**
+  - will retrieve data from the right table(table 2) and matching rows from the left table(table 1)
+
+- **FULL/OUTER Join**
+  - will retrieve all records when there is a match in either the left or right table
+
+![JOINS in SQL](https://i.pinimg.com/originals/33/58/3f/33583f5a5f0fb7457743dd278369ab46.png)
+
+## INNER Join
+The INNER JOIN keyword selects records that have matching values in both tables.  
+
+Syntax:
+```sql
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+```
+
+Example:
+```sql
+SELECT products.name, orders.order_time FROM orders
+INNER JOIN products ON orders.product_id = products.id;
+
+-- Shorthand version
+SELECT p.name, p.price, o.order_time FROM orders o 
+JOIN products p ON o.product_id = p.id
+ORDER BY o.order_time DESC;
+
+SELECT p.name, p.price, o.order_time FROM orders o 
+JOIN products p ON o.product_id = p.id
+WHERE p.price > 4
+ORDER BY o.order_time DESC;
+
+SELECT c.first_name, o.order_time FROM orders o
+JOIN customers c ON o.customer_id = c.id;
+
+-- Joining multiple tables
+SELECT orders.id as "Order Id", products.name, customers.first_name, orders.order_time 
+FROM products 
+JOIN orders ON products.id = orders.product_id
+JOIN customers ON customers.id = orders.customer_id;
+```
+
+## LEFT Join
+The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match.  
+
+Syntax: 
+```sql
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+```
+
+Example:
+```sql
+-- orders as first/left table
+SELECT o.id, c.phone_no, c.first_name, o.order_time FROM orders o 
+LEFT JOIN customers c 
+ON o.customer_id = c.id
+ORDER BY o.order_time;
+
+-- customers as first/left table
+SELECT o.id, c.phone_no, c.first_name, o.order_time FROM customers c 
+LEFT JOIN orders o 
+ON c.id = o.customer_id
+ORDER BY o.order_time;
+```
+
+## RIGHT Join
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.  
+
+Syntax:
+```sql
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+```
+
+Example:
+```sql
+-- orders as second/right table
+SELECT o.id, c.phone_no, c.first_name, o.order_time FROM orders o 
+RIGHT JOIN customers c 
+ON o.customer_id = c.id
+ORDER BY o.order_time;
+
+-- customers as second/right table
+SELECT o.id, c.phone_no, c.first_name, o.order_time FROM customers c 
+RIGHT JOIN orders o 
+ON c.id = o.customer_id
+ORDER BY o.order_time;
+```
+
+## FULL/OUTER Join
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.  
+
+Syntax:
+```sql
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+```
+
+Example:
+```sql
+SELECT o.id, c.phone_no, c.first_name, o.order_time FROM customers c 
+FULL OUTER JOIN orders o 
+ON c.id = o.customer_id
+ORDER BY o.order_time;
+```
+
+## Joining more than two tables
+
+Example:
+```sql
+SELECT o.id, c.first_name, c.last_name, p.name, p.price 
+FROM products p
+JOIN orders o ON p.id = o.product_id
+JOIN customers c ON c.id = o.customer_id;
+```
+
+## Exercise:  JOINS
+```
+Exercise 1
+- SELECT the order id and customers phone no. for all orders of product id 4
+- SELECT product name and order time for the filter coffees sold between January 15th 2017 and February 14th 2017
+- SELECT the product name and price adn order time for all orders from FEMALEs in January 2017
+```
+
+Source: [Solution to Exercise1](./sql/04_JOINS/01_exercise1.sql)
