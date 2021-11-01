@@ -447,3 +447,52 @@ Exercise 2
 ```
 
 Source: [Solution to Exercise2](./sql/03_SELECT/02_exercise2.sql)
+
+## DISTINCT
+
+Syntax: 
+```sql
+SELECT DISTINCT column FROM table_name;
+```
+
+Example:  
+```sql
+SELECT DISTINCT coffee_origin FROM products;
+```
+
+## LIMIT and OFFSET
+
+Syntax: 
+```sql
+SELECT column FROM table_name
+LIMIT value
+OFFSET value;
+```
+
+Example:
+```sql
+SELECT * FROM customers
+LIMIT 10;
+```
+
+## Column Name Alias
+
+Syntax:  
+```sql
+SELECT column1 AS alias FROM table_name;
+```
+
+Example:
+```sql
+SELECT coffee_origin AS country FROM products;
+```
+
+## Exercise: 3 
+```
+Exercise 3
+- From the customer table, select distinct last names and order alphabetically from A-Z
+- From the orders table, select the first 3 orders placed by customer with id 1 in Feb 2017
+- From the products table, select the name, price and coffee origin but rename the price to retail price in the result set
+```
+
+Source: [Solution to Exercise3](./sql/03_SELECT/03_exercise3.sql)
