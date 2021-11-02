@@ -654,7 +654,8 @@ is the process of efficiently organizing data in a database.
 
 **Why?**
 - to eliminate redundant data
-- to only store related data in the table
+- to only store related data in the table  
+  
 **Benefits:**  
 - reduce storage space
 - reduce insert, update and delete anomalies
@@ -753,3 +754,21 @@ a many-to-many relationship is where more than one record in a table is related 
 
 - **University Database**: Professor and subject taught by the professor. 
 - **Product Ordering Database**: One or more products can be ordered from one supplier. At the same time, the company can order the same product from many supplier.
+
+# Constraints
+The constraints are placed on columns within tables, and they're used to restrict what values can be entered into those columns. Constraints are the rules enforced on the data columns of a table. These are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the database. 
+
+Common types of constraints are:  
+- **NOT NULL** a column can't contain any NULL values. 
+- **UNIQUE** a column can't contain any duplicate values of data. 
+- **PRIMARY KEY** a column that uniquely identifies each row of data. 
+- **FOREIGN KEY** a column which is related to the primary key in another table. 
+- **CHECK** Controls the values that can be inserted in a column.
+  - Example: CHECK(ratings BETWEEN 0 AND 100)
+- **DEFAULT** if no values is inserted into a column, you can set a default value.
+  - Example: email DEFAULT 'NO DATA'
+
+## Database Design
+- creating a Cinema Booking System
+
+[Read More](./sql/05_DatabaseDesign/README.md)
