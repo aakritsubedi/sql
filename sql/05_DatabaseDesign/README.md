@@ -14,3 +14,6 @@ creating a Cinema Booking System
 - inserting sample data into tables
 
 ![Schema](./DBSchema.png)
+
+## Creating Database and all table schemas
+[Table Schema](./schema.sql)
