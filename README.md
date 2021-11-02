@@ -655,7 +655,7 @@ is the process of efficiently organizing data in a database.
 **Why?**
 - to eliminate redundant data
 - to only store related data in the table
-**Benefits:**
+**Benefits:**  
 - reduce storage space
 - reduce insert, update and delete anomalies
 - improve query performance
@@ -700,3 +700,56 @@ Tables are in 4NF if:
 ## 5th Normal Form (5NF)
 Tables are in 5NF if:
 - A composite key shouldn't have any cyclic dependencies.
+
+# Relationships
+Tables are related through primary and foreign keys.
+
+- One to One Relationship(1:1)
+- One to Many Relationship(1:M)
+- Many to Many Relationship(M:N)
+  
+## One to One Relationship
+where a key to one table appears no more than once as the key in another table and vice versa.  
+
+Eg: In school database where we had student tables and teachers tables, well you could have a department table and you could have a head of department table. And for each department,
+you can only have one head of department and the head of a department can only be the head of one department. So these two tables would have a `one-to-one relationship`.
+
+**Examples of One to One Relationship**  
+
+One to One relationship where a record in one entity (table) is associated with exactly one record in another entity (table).  
+Some real-life examples of one-to-one relationships:
+- **Country - capital city**: Each country has exactly one capital city. Each capital city is the capital of exactly one country.
+- **Person - their fingerprints**: Each person has a unique set of fingerprints. Each set of fingerprints identifies exactly one person.
+- **Email - user account**: For many websites, one email address is associated with exactly one user account and each user account is identified by its email address.
+- **Spouse - spouse**: In a monogamous marriage, each person has exactly one spouse.
+- **User profile - user settings**: One user has one set of user settings. One set of user settings is associated with exactly one user.  
+
+For clarity, let’s contrast these examples with relationships that are not one-to-one:  
+
+- **Country - city**: Each city is in exactly one country, but most countries have many cities.
+- **Parent - child**: Each child has two parents, but each parent can have many children.
+- **Employee - manager**: Each employee has exactly one immediate supervisor or manager, but each manager usually supervises many employees.  
+
+## One to Many Relationship
+where a primary key of one table can be in multiple rows of a foreign key column of another table.
+
+Eg: In a coffee store database, we had a customer table and an orders table. And obviously, a customer can place many days as they like. Customer can come into the store multiple days, order multiple orders. But one particular order can only relate to one customer. The customer can place many orders,but a particular order can only be related to one customer. So the customers and orders table share a `one-to-many relationship`.  
+
+
+**Examples of One to Many Relationship** 
+the most common is the one-to-many relationship, which is often written as 1:N. This kind of relationship means that one row in a table (usually called  the parent table) can have a relationship with many rows in another table (usually called child table). Some common examples of one-to-many relationships are:
+
+- A car maker makes many different models, but a particular car model is built only by a single car maker.
+- One customer may make several purchases, but each purchase is made by a single customer.
+- One company can have many phone numbers, but a phone number belongs to one company.
+
+## Many to Many Relationship
+where a many-to-many relationship is where two tables can have many instances of each other.  
+
+Eg: In our coffee store database, between products and orders table, these two tables actually show many-to-many relationship.
+
+**Examples of One to Many Relationship** 
+a many-to-many relationship is where more than one record in a table is related to more than one record in another table. 
+
+- **University Database**: Professor and subject taught by the professor. 
+- **Product Ordering Database**: One or more products can be ordered from one supplier. At the same time, the company can order the same product from many supplier.
