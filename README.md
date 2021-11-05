@@ -235,9 +235,6 @@ Exercise 1
 
 Source: [Solution to Exercise1](./sql/01_DDL/01_exercise1.sql)
 
-# Data Manipulation Language 
-Data manipulation language or DML is a subset of SQL which is concerned with the inserting and updating and deleting of data in tables. So DDL was concerned with creating tables, and now DML is concerned with inserting data into those tables. 
-
 - INSERT data into table  
 Syntax:
 ```sql
@@ -772,3 +769,159 @@ Common types of constraints are:
 - creating a Cinema Booking System
 
 [Read More](./sql/05_DatabaseDesign/README.md)
+
+# Aggregate Functions
+- perform a calculations on data within a column and returns one result row.
+Eg:  
+- can use GROUP BY clause to group the results by one (or more) columns.
+- can use a HAVING clause in a similar way to use WHERE clause in a SELECT statement to filter the results set. 
+
+Some aggregate functions are COUNT, SUM, MIN and MAX, AVG. 
+
+## COUNT
+The COUNT() function returns the number of records returned by a select query.
+
+Syntax:
+```sql
+COUNT(expression)
+```
+
+Example:
+```sql
+-- will not count NULL values
+SELECT COUNT(id) FROM customers;
+
+-- using WHERE clause
+SELECT COUNT(*) FROM customers 
+WHERE first_name IS NULL;
+```
+
+## SUM
+The SUM() function calculates the sum of a set of values.
+
+Syntax:
+```sql
+SELECT SUM(column) FROM rooms;
+```
+
+Example:
+```sql
+-- in online booking database
+SELECT SUM(no_seats) FROM rooms;
+
+-- adding WHERE clause 
+SELECT SUM(no_seats) FROM rooms
+WHERE id > 1;
+```
+
+## MAX and MIN
+- The `MAX()` function returns the maximum value in a set of values.
+- The `MIN()` function returns the minimum value in a set of values.
+
+Example:
+```sql
+-- in online booking system
+SELECT MAX(length_min) FROM films;
+
+SELECT MIN(length_min) FROM films;
+```
+
+## AVG
+The AVG() function returns the average value of an expression.
+
+- `NULL` values are ignored. 
+
+Example:
+```sql
+SELECT AVG(length_min) FROM films;
+
+-- adding WHERE clause 
+SELECT AVG(length_min) FROM films
+WHERE length_min > 120;
+```
+
+- Other numeric functions are ABS, ACOS, ASIN, ATAN, CEILING, COS, EXP, FLOOR, PI, POWER, ROUND, SQRT, SQUARE etc. 
+
+# Exercise1: Aggregate Function 
+aggregation function is a function where the values of multiple rows are grouped together to form a single summary value. Common aggregate functions include:
+• Average 
+• Count 
+• Maximum 
+• Median 
+• Minimum 
+• Mode 
+• Range 
+• Sum
+
+## Exercise: 1 Aggregate Function
+```
+Exercise 1: 
+- how many bookings did customer id 10 make in October 2017
+- count the no. of screening for Blade Runner 2049 in October 2017
+- count the no. of unique customer who made a booking for October 2017
+```
+
+Source: [Solution to Exercise1](./sql/06_AggregateFn/01_exercise1.sql)
+
+# Grouping Data
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".  
+
+The GROUP BY statement is often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns.
+
+Syntax: 
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+```
+
+Example:
+```sql
+SELECT customer_id, count(id) FROM bookings
+GROUP BY customer_id;
+
+SELECT customer_id, screening_id, count(id) FROM bookings
+GROUP BY customer_id, screening_id;
+
+-- Joining and Grouping 
+SELECT f.name, s.start_time, c.first_name, c.last_name FROM films f
+JOIN screenings s ON f.id = s.film_id
+JOIN bookings b ON s.id = b.screening_id
+JOIN customers c ON b.customer_id = c.id
+GROUP BY f.name, c.last_name, c.first_name, s.start_time
+ORDER BY s.start_time;
+```
+
+# Having Clause
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+
+Syntax: 
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+```
+
+Example:
+```sql
+SELECT customer_id, count(id) FROM bookings
+GROUP BY customer_id
+HAVING customer_id = 10;
+
+SELECT customer_id, screening_id, count(id) FROM bookings
+GROUP BY customer_id, screening_id
+HAVING customer_id = 10;
+```
+
+## Exercise: 2 Group by and Having clause
+```
+Exercise 2
+-- SELECT the customer id and count the no. of reserved seats grouped by customer for October 2017
+-- SELECT the film name and count the no. of screenings for each film that is over 2hours long.
+```
+
+Source: [Solution to Exercise2](./sql/06_AggregateFn/02_exercise2.sql)

@@ -9,12 +9,11 @@ CREATE TABLE customers (
   email VARCHAR(45) NOT NULL UNIQUE
 );
 
--- Bookings Table
-CREATE TABLE bookings (
+-- Films Table
+CREATE TABLE films (
   id SERIAL PRIMARY KEY,
-  screening_id INT NOT NULL,
-  customer_id INT NOT NULL,
-  FOREIGN KEY (customer_id) REFERENCES customers (id)
+  name VARCHAR(45) NOT NULL,
+  length_min INT NOT NULL
 );
 
 --Rooms Table
@@ -22,6 +21,25 @@ CREATE TABLE rooms (
   id SERIAL PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
   no_seats INT NOT NULL
+);
+
+-- Screenings Table
+CREATE TABLE screenings (
+  id SERIAL PRIMARY KEY,
+  film_id INT NOT NULL,
+  room_id INT NOT NULL,
+  start_time TIMESTAMP NOT NULL,
+  FOREIGN KEY (film_id) REFERENCES films (id),
+  FOREIGN KEY (room_id) REFERENCES rooms (id)
+);
+
+-- Bookings Table
+CREATE TABLE bookings (
+  id SERIAL PRIMARY KEY,
+  screening_id INT NOT NULL,
+  customer_id INT NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers (id),
+  FOREIGN KEY (screening_id) REFERENCES screenings (id)
 );
 
 -- Seats Tables
@@ -41,22 +59,3 @@ CREATE TABLE reserved_seat (
   FOREIGN KEY (booking_id) REFERENCES bookings (id),
   FOREIGN KEY (seat_id) REFERENCES seats (id)
 );
-
--- Films Table
-CREATE TABLE films (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(45) NOT NULL,
-  length_min INT NOT NULL
-);
-
--- Screenings Table
-CREATE TABLE screenings (
-  id SERIAL PRIMARY KEY,
-  film_id INT NOT NULL,
-  room_id INT NOT NULL,
-  start_time TIMESTAMP NOT NULL,
-  FOREIGN KEY (film_id) REFERENCES films (id),
-  FOREIGN KEY (room_id) REFERENCES rooms (id)
-);
-
-
