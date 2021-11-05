@@ -1075,11 +1075,75 @@ Two types of subquery:
 
 ## Exercise: 1 Subqueries
 
-```
--- Exercise 1
+``` 
+Exercise 1
 -- Select the film name and length for all films with a length greater than the average film length
 -- Select the maximum no. and minimum no. of screening for a particular film
 -- Select each film name and the no. of screenings for that film
 ```
 
 Source: [Solution to Exercise1](./sql/07_Subqueries/01_exercise1.sql)
+
+# String Function
+
+Example:
+
+```sql
+-- CONCAT 
+-- Syntax: SELECT CONCAT(column1, column2) AS newColumn FROM table_name;
+SELECT CONCAT(first_name, last_name) AS full_name FROM customers;
+SELECT CONCAT(first_name, " ", last_name) AS full_name FROM customers;
+
+-- SUBSTRING
+-- Syntax: SELECT SUBSTRING(column, start, length) AS substring FROM table_name; length is optional.
+SELECT SUBSTRING(first_name, 2, 4) AS key FROM customers;
+SELECT SUBSTRING(last_name, 2) AS password FROM customers;
+SELECT SUBSTRING(last_name, -2, 2) AS password FROM customers; --starts counting from last
+
+-- UPPER AND LOWER
+-- Syntax: SELECT UPPER(column) AS newColumn FROM table_name;
+-- Syntax: SELECT LOWER(column) AS newColumn FROM table_name;
+SELECT UPPER(first_name), LOWER(last_name) FROM customers;
+```
+
+## Exercise 1: String Functions
+```
+Exercise 1
+- Concatenate the film names and length from the films table
+- Extract the customers email from the 5th character onwards
+- Select the customers first name in lower case and their last name in upper case for each customer with a last name of `Smith`
+- Select the last 3 letters of each film name from the films table
+- Concatenate the first three letters in the first_name and last_name columns together from the customers table
+```
+
+Source: [Solution to Exercise1](./sql/08_StringFn/01_exercise1.sql)
+
+# Date Function
+
+Example: 
+
+```sql
+-- DATE
+SELECT DATE('2021-01-05 07:45:32');
+SELECT DATE(start_time) as release FROM screenings;
+SELECT * FROM screenings WHERE DATE(start_time)= '2017-10-03';
+SELECT * FROM screenings WHERE DATE(start_time) BETWEEN '2017-10-03' AND '2017-10-05';
+
+-- Month
+SELECT MONTH('2021-01-05 07:45:32'); 
+SELECT MONTH(start_time) as release FROM screenings;
+SELECT * FROM screenings WHERE MONTH(start_time) = '10';
+
+-- YEAR
+SELECT YEAR('2021-01-05 07:45:32');
+SELECT YEAR(start_time) as release FROM screenings;
+SELECT * FROM screenings WHERE YEAR(start_time) = '2017';
+```
+
+## Exercise 1: Date Functions
+```
+Exercise 1: 
+- Select the film id and start time from the screenings table for the date of 20th of Oct 2017
+- Select all the data from the screenings table for the start time between the 6th and 13th Oct 2017
+- Select all the data from the screenings table for Oct 2017
+```
