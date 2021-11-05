@@ -1072,3 +1072,14 @@ Two types of subquery:
     (SELECT count(seat_id) FROM reserved_seat WHERE booking_id = b.id)
     FROM bookings b;
     ```
+
+## Exercise: 1 Subqueries
+
+```
+-- Exercise 1
+-- Select the film name and length for all films with a length greater than the average film length
+-- Select the maximum no. and minimum no. of screening for a particular film
+-- Select each film name and the no. of screenings for that film
+```
+
+Source: [Solution to Exercise1](./sql/07_Subqueries/01_exercise1.sql)
