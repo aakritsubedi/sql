@@ -1163,3 +1163,6 @@ Source: [Solution to Exercise1](./sql/09_DateFn/01_exercise1.sql)
     - [Solution](./sql/10_Challenges/05_fifth.sql) 
 6. How many of the customers made a booking in October 2017? 
     - [Solution](./sql/10_Challenges/06_sixth.sql) 
+
+# Certificate
+![Certificate](./certificate.jpg)
