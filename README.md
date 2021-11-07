@@ -1147,3 +1147,19 @@ Exercise 1:
 - Select all the data from the screenings table for the start time between the 6th and 13th Oct 2017
 - Select all the data from the screenings table for Oct 2017
 ```
+
+Source: [Solution to Exercise1](./sql/09_DateFn/01_exercise1.sql)
+
+# Challenges
+1.  Which films are over 2 hours long? 
+    - [Solution](./sql/10_Challenges/01_first.sql)  
+2. Which film had the most screening in October 2017?
+    - [Solution](./sql/10_Challenges/02_second.sql) 
+3. How many bookings did the film 'Jigsaw' have in October 2017?
+    - [Solution](./sql/10_Challenges/03_third.sql)
+4. Which 5 customers made the most bookings in October 2017?
+    - [Solution](./sql/10_Challenges/04_fourth.sql) 
+5. Which film was shown in the Chaplin room most often in October 2017?
+    - [Solution](./sql/10_Challenges/05_fifth.sql) 
+6. How many of the customers made a booking in October 2017? 
+    - [Solution](./sql/10_Challenges/06_sixth.sql) 
