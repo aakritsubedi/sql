@@ -1164,5 +1164,53 @@ Source: [Solution to Exercise1](./sql/09_DateFn/01_exercise1.sql)
 6. How many of the customers made a booking in October 2017? 
     - [Solution](./sql/10_Challenges/06_sixth.sql) 
 
+# SQL Procedure
+A Store Procedure is group of T-SQL(Transact SQL) statements. If we have a situation, where you write the same query over and over again, you can save the specific query as a stored procedure and call it just by it's name. 
+
+> A subprogram is a program unit/module that performs a particular task. These subprograms are combined to form larger programs.
+
+A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.  So if you have an SQL query that you write over and over again, save it as a stored procedure, and then just call it to execute it. You can also pass parameters to a stored procedure, so that the stored procedure can act based on the parameter value(s) that is passed.
+
+Syntax:
+```sql
+CREATE [OR REPLACE] PROCEDURE procedure_name 
+[(parameter_name [IN | OUT | IN OUT] type [, ...])] 
+{IS | AS} 
+BEGIN 
+  < procedure_body > 
+END procedure_name; 
+
+-- procedure-name specifies the name of the procedure.
+-- [OR REPLACE] option allows the modification of an existing procedure.
+-- The optional parameter list contains name, mode and types of the parameters. IN represents the value that will be passed from outside and OUT represents the parameter that will be used to return a value outside of the procedure.
+-- procedure-body contains the executable part.
+-- The AS keyword is used instead of the IS keyword for creating a standalone procedure.
+```
+
+Example: 
+```sql
+CREATE PROCEDURE insert_data(a integer, b integer)
+LANGUAGE SQL
+AS $$
+INSERT INTO tbl VALUES (a);
+INSERT INTO tbl VALUES (b);
+$$;
+
+-- define the input and output arguments with IN and OUT, where IN define the input arguments and OUT the output arguments.
+CREATE FUNCTION sum_n_product(IN x int,IN y int, OUT sum int, OUT prod int) 
+AS $$
+BEGIN
+    sum := x + y;
+    prod := x * y;
+END;
+$$ 
+LANGUAGE plpgsql;
+```
+
+```sql
+-- DROP PROCEDURE procedure-name; 
+DROP PROCEDURE spGetEmployeeName;
+```
+
 # Certificate
 ![Certificate](./certificate.jpg)
